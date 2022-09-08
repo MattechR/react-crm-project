@@ -1,0 +1,18 @@
+.header {
+  font-family: url("https://fonts.googleapis.com/css2?family=Cormorant:wght@500&family=Raleway&family=Source+Code+Pro:ital,wght@1,300;1,500&display=swap");
+  font-family: "Cormorant", serif;
+  font-family: "Raleway", sans-serif;
+  font-family: "Source Code Pro", monospace;
+}
+.main {
+  font-family: url("https://fonts.googleapis.com/css2?family=Cormorant:wght@500&family=Raleway&family=Source+Code+Pro:ital,wght@1,300;1,500&display=swap");
+  font-family: "Cormorant", serif;
+  font-family: "Raleway", sans-serif;
+  font-family: "Source Code Pro", monospace;
+}
+.footer {
+  font-family: url("https://fonts.googleapis.com/css2?family=Cormorant:wght@500&family=Raleway&family=Source+Code+Pro:ital,wght@1,300;1,500&display=swap");
+  font-family: "Cormorant", serif;
+  font-family: "Raleway", sans-serif;
+  font-family: "Source Code Pro", monospace;
+}

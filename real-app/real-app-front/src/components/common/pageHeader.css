@@ -1,0 +1,9 @@
+.page-header {
+  text-align: center;
+  margin-block-end: 1rem;
+  letter-spacing: 2px;
+}
+.page-description {
+  text-align: center;
+  word-spacing: 1px;
+}

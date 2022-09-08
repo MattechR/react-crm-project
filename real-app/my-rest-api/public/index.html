@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input placeholder="email" type="text" id="email" />
+    <input placeholder="password" type="text" id="password" />
+    <button id="login-btn">login</button>
+
+    <h1>token</h1>
+    <div id="token"></div>
+
+    <h1>GET /api/user/me</h1>
+    <button id="me-btn">Get me</button>
+    <div id="me"></div>
+
+    <script>
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const loginBtn = document.getElementById("login-btn");
+      const token = document.getElementById("token");
+      const me = document.getElementById("me");
+      const meBtn = document.getElementById("me-btn");
+
+      let tokenFromServer = "";
+
+          loginBtn.addEventListener("click", ()=> {
+            const resp = await fetch("/api/auth", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json"
+              },
+              body: JSON.stringify({
+                email: email.value,
+                password: password.value
+              })
+            }).then((resp) => resp.text())
+              if (resp.status === 400) {
+                alert(await resp.text())
+                return
+              }
+              if (resp.status === 200) {
+                const data = await resp.json()
+                tokenFromServer = data.token
+                token.innerHTML = data.token
+              }
+          })
+
+          meBtn.addEventListener("click", ()=>{
+             const resp = await fetch('/api/users/me',{
+               headers: {
+                  'x-auth-token': tokenFromServer
+               }
+             })
+             const body = await resp.text()
+             if (resp.status === 401) {
+               alert(body)
+               return
+             }
+
+             if (resp.status === 200) {
+               const body = await resp.text()
+               me.innerHTML = body
+             }
+          })
+    </script>
+  </body>
+</html>
